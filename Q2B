@@ -1,0 +1,12 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+loan = pd.read_csv("loan50.csv")
+
+plt.hist(loan["interest_rate"], bins=10)
+
+plt.title("Distribution of Interest Rates")
+plt.xlabel("Interest Rate (%)")
+plt.ylabel("Frequency")
+
+plt.show()
