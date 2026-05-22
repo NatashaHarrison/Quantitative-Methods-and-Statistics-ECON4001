@@ -1,0 +1,14 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+loan = pd.read_csv("loan50.csv")
+
+loan.boxplot(column="interest_rate", by="homeownership")
+
+plt.title("Interest Rates by Homeownership Status")
+plt.suptitle("")
+
+plt.xlabel("Homeownership Status")
+plt.ylabel("Interest Rate (%)")
+
+plt.show()
