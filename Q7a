@@ -1,0 +1,9 @@
+import pandas as pd
+
+births = pd.read_csv("ncbirths.csv")
+
+births["premature"] = births["weeks"] < 37
+
+table = pd.crosstab(births["habit"], births["premature"])
+
+print(table)
