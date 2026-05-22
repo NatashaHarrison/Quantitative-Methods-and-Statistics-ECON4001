@@ -1,0 +1,22 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import statsmodels.api as sm
+
+mario = pd.read_csv("mariokart.csv")
+
+plt.scatter(mario["wheels"], mario["total_pr"])
+
+plt.title("Wheels vs Final Auction Price")
+plt.xlabel("Number of Wheels")
+plt.ylabel("Final Auction Price")
+
+plt.show()
+
+X = mario["wheels"]
+X = sm.add_constant(X)
+
+y = mario["total_pr"]
+
+model = sm.OLS(y, X).fit()
+
+print(model.summary())
