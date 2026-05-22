@@ -1,0 +1,18 @@
+import pandas as pd
+from scipy.stats import ttest_ind
+
+births = pd.read_csv("ncbirths.csv")
+
+smokers = births[births["habit"] == "smoker"]["weight"]
+nonsmokers = births[births["habit"] == "nonsmoker"]["weight"]
+
+print("Smokers mean:", smokers.mean())
+print("Nonsmokers mean:", nonsmokers.mean())
+
+print("Smokers SD:", smokers.std())
+print("Nonsmokers SD:", nonsmokers.std())
+
+t, p = ttest_ind(smokers, nonsmokers, equal_var=False)
+
+print("T-statistic:", t)
+print("P-value:", p)
