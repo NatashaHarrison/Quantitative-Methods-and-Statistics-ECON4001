@@ -1,0 +1,24 @@
+import pandas as pd
+from statsmodels.stats.proportion import proportions_ztest
+
+births = pd.read_csv("ncbirths.csv")
+
+births["premature"] = births["weeks"] < 37
+
+smokers = births[births["habit"] == "smoker"]
+nonsmokers = births[births["habit"] == "nonsmoker"]
+
+count = [
+    smokers["premature"].sum(),
+    nonsmokers["premature"].sum()
+]
+
+nobs = [
+    len(smokers),
+    len(nonsmokers)
+]
+
+stat, p = proportions_ztest(count, nobs)
+
+print("Z-statistic:", stat)
+print("P-value:", p)
