@@ -1,0 +1,14 @@
+import pandas as pd
+import statsmodels.api as sm
+
+mario = pd.read_csv("mariokart.csv")
+
+X = mario[["wheels", "duration"]]
+
+X = sm.add_constant(X)
+
+y = mario["total_pr"]
+
+model = sm.OLS(y, X).fit()
+
+print(model.summary())
