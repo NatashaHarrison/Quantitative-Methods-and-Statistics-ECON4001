@@ -1,0 +1,14 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+loan = pd.read_csv("loan50.csv")
+
+counts = loan["homeownership"].value_counts()
+
+counts.plot(kind="bar")
+
+plt.title("Homeownership Status")
+plt.xlabel("Homeownership")
+plt.ylabel("Frequency")
+
+plt.show()
