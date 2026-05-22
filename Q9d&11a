@@ -1,0 +1,23 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import statsmodels.api as sm
+
+mario = pd.read_csv("mariokart.csv")
+
+X = sm.add_constant(mario["wheels"])
+y = mario["total_pr"]
+
+model = sm.OLS(y, X).fit()
+
+residuals = model.resid
+fitted = model.fittedvalues
+
+plt.scatter(fitted, residuals)
+
+plt.axhline(0)
+
+plt.title("Residual Plot")
+plt.xlabel("Fitted Values")
+plt.ylabel("Residuals")
+
+plt.show()
